@@ -1,0 +1,84 @@
+{
+    "page": "1",
+    "bgColor": "#f1f1f1",
+    "sectionArr": [{
+        "templateID": "collection",
+        "NoNum": "1",
+        "cellArr": [{
+            "h": "1",
+            "bgColor": "#f02b2b"
+        },{
+            "h": "2",
+            "bgColor": "#f02b2b"
+        }]
+    },{
+        "templateID": "ad",
+        "NoNum": "2",
+        "cellArr": [{
+            "h": "100",
+            "bgColor": "#f02b2b"
+        }]
+    },{
+        "templateID": "scroll",
+        "NoNum": "3",
+        "tabList": [{
+            "tabWidth": "60",
+            "tabName": "附近",
+            "tabIndex": "0"
+        },{
+            "tabWidth": "60",
+            "tabName": "推荐",
+            "tabIndex": "1"
+        },{
+            "tabWidth": "60",
+            "tabName": "关注",
+            "tabIndex": "2"
+        },{
+            "tabWidth": "60",
+            "tabName": "品类",
+            "tabIndex": "3"
+        },{
+            "tabWidth": "60",
+            "tabName": "其他",
+            "tabIndex": "4"
+        },{
+            "tabWidth": "60",
+            "tabName": "品类2",
+            "tabIndex": "5"
+        },{
+            "tabWidth": "60",
+            "tabName": "其他2",
+            "tabIndex": "6"
+        }],
+        "vcList": [{
+            "tabWidth": "60",
+            "tabName": "附近",
+            "tabIndex": "0"
+        },{
+            "tabWidth": "60",
+            "tabName": "推荐",
+            "tabIndex": "1"
+        },{
+            "tabWidth": "60",
+            "tabName": "关注",
+            "tabIndex": "2"
+        },{
+            "tabWidth": "60",
+            "tabName": "品类",
+            "tabIndex": "3"
+        },{
+            "tabWidth": "60",
+            "tabName": "其他",
+            "tabIndex": "4"
+        },{
+            "tabWidth": "60",
+            "tabName": "品类2",
+            "tabIndex": "5"
+        },{
+            "tabWidth": "60",
+            "tabName": "其他2",
+            "tabIndex": "6"
+        }]
+    }
+    ]
+}
