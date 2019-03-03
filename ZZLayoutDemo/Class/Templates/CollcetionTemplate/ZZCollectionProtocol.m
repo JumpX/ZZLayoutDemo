@@ -15,7 +15,7 @@
     return @"ZZCollectionView";
 }
 
--(NSString *)cellReuseIdentifier:(ZZSectionModel *)sectionModel indexPath:(NSIndexPath *)indexPath
+- (NSString *)cellReuseIdentifier:(ZZSectionModel *)sectionModel indexPath:(NSIndexPath *)indexPath
 {
     return [NSString stringWithFormat:@"%@%@",sectionModel.templateID, sectionModel.NoNum];
 }

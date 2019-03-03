@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+
 @class ZZSectionModel;
 @interface ZZContainerViewController : UIViewController
 
-@property (nonatomic, strong) UIScrollView *scrollView;
-
+//@property (nonatomic, strong) UIScrollView *scrollView;
 - (void)bindDataWithViewModel:(ZZSectionModel *)viewData;
 
 @end

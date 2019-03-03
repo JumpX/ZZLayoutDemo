@@ -10,11 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZZTableView : UIView
+@interface ZZTableView : UITableView <UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) UITableView *tableView;
-
-- (void)loadData;
 
 @end
 

@@ -1,6 +1,6 @@
 //
 //  ZZTotalModel.h
-//  ZZHomePageDemo
+//  ZZLayoutDemo
 //
 //  Created by Jungle on 2019/2/27.
 //  Copyright (c) 2019. All rights reserved.
@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZTotalModel : ZZBaseModel
 
-@property (nonatomic, copy) NSString *bgColor;
-@property (nonatomic, strong) NSArray <ZZSectionModel *>*sectionArr;
+@property (nonatomic, copy)     NSString                    *bgColor;
+@property (nonatomic, strong)   NSArray <ZZSectionModel *>  *sectionArr;
 
 - (NSUInteger)rowNumInSection:(ZZSectionModel *)sectionModel;
 - (CGFloat)cellHeight:(ZZSectionModel *)sectionModel indexPath:(NSIndexPath *)indexPath;

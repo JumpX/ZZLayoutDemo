@@ -1,12 +1,12 @@
 //
-//  ZZRecommendViewController.m
+//  ZZOtherViewController.m
 //  ZZLayoutDemo
 //
 //  Created by Jungle on 2019/3/1.
 //  Copyright (c) 2019. All rights reserved.
 //
 
-#import "ZZRecommendViewController.h"
+#import "ZZOtherViewController.h"
 #import <MJRefresh/MJRefresh.h>
 #import "ZZUtils.h"
 #import "ZZTotalModel.h"
@@ -16,29 +16,62 @@
 #import "ZZRecommendCell.h"
 #import "UIView+Addtion.h"
 
-@interface ZZRecommendViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface ZZOtherViewController ()<UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UITableView                   *tableView;
 @property (nonatomic, strong) NSMutableArray <ZZCellModel*> *cellArr;
+@property (nonatomic, assign) BOOL                          vcCanScroll;
 
 @end
 
-@implementation ZZRecommendViewController
+@implementation ZZOtherViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [self.view addSubview:self.tableView];
-    self.cellArr = [NSMutableArray new];
+#pragma mark - Data
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+- (void)loadData
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSString *file = [[NSBundle mainBundle] pathForResource:@"cellsdata" ofType:@"geojson"];
         NSData *data = [NSData dataWithContentsOfFile:file];
         ZZSectionModel *sectionModel = [ZZSectionModel yy_modelWithJSON:data];
         [self.cellArr addObjectsFromArray:sectionModel.cellArr];
         [self.tableView reloadData];
+//        if ([self.tableView.mj_footer isRefreshing]) {
+//            [self.tableView.mj_footer endRefreshing];
+//        }
     });
 }
+
+#pragma mark - Life Cycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ZZVCCanScroll:) name:@"kZZVCCanScroll" object:nil];
+    
+    self.cellArr = [NSMutableArray new];
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        [self loadData];
+    }];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self loadData];
+}
+
+#pragma mark - Status Change
+
+- (void)ZZVCCanScroll:(NSNotification *)noti
+{
+    _vcCanScroll = [noti.object boolValue];
+    if (!_vcCanScroll) {
+        self.tableView.contentOffset = CGPointZero;
+    }
+}
+
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -69,11 +102,27 @@
     return cell;
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (!self.vcCanScroll) {
+        scrollView.contentOffset = CGPointZero;
+    }
+    if (scrollView.contentOffset.y <= 0) {
+        self.vcCanScroll = NO;
+        scrollView.contentOffset = CGPointZero;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"kZZTableViewLeaveTop" object:nil];//到顶通知父视图改变状态
+    }
+    self.tableView.showsVerticalScrollIndicator = _vcCanScroll?YES:NO;
+}
+
+#pragma mark - Getter
+
 - (UITableView *)tableView
 {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        _tableView.scrollEnabled = NO;
         if (@available(iOS 11.0, *)){
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
@@ -84,9 +133,10 @@
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.alwaysBounceVertical = YES;
+        [self.view addSubview:_tableView];
     }
     return _tableView;
 }
 
-@end
 
+@end

@@ -22,61 +22,77 @@
         "templateID": "scroll",
         "NoNum": "3",
         "tabList": [{
-            "tabWidth": "60",
+            "tabWidth": "100",
             "tabName": "附近",
             "tabIndex": "0"
         },{
-            "tabWidth": "60",
+            "tabWidth": "100",
             "tabName": "推荐",
             "tabIndex": "1"
         },{
-            "tabWidth": "60",
+            "tabWidth": "100",
             "tabName": "关注",
             "tabIndex": "2"
         },{
-            "tabWidth": "60",
-            "tabName": "品类",
+            "tabWidth": "100",
+            "tabName": "服饰穿搭",
             "tabIndex": "3"
         },{
-            "tabWidth": "60",
-            "tabName": "其他",
+            "tabWidth": "100",
+            "tabName": "生活百货",
             "tabIndex": "4"
         },{
-            "tabWidth": "60",
-            "tabName": "品类2",
+            "tabWidth": "100",
+            "tabName": "美食吃货",
             "tabIndex": "5"
         },{
-            "tabWidth": "60",
-            "tabName": "其他2",
+            "tabWidth": "100",
+            "tabName": "美容护理",
+            "tabIndex": "6"
+        },{
+            "tabWidth": "100",
+            "tabName": "母婴儿童",
+            "tabIndex": "5"
+        },{
+            "tabWidth": "100",
+            "tabName": "数码家电",
             "tabIndex": "6"
         }],
         "vcList": [{
-            "tabWidth": "60",
+            "tabWidth": "100",
             "tabName": "附近",
             "tabIndex": "0"
         },{
-            "tabWidth": "60",
+            "tabWidth": "100",
             "tabName": "推荐",
             "tabIndex": "1"
         },{
-            "tabWidth": "60",
+            "tabWidth": "100",
             "tabName": "关注",
             "tabIndex": "2"
         },{
-            "tabWidth": "60",
-            "tabName": "品类",
+            "tabWidth": "100",
+            "tabName": "服饰穿搭",
             "tabIndex": "3"
         },{
-            "tabWidth": "60",
-            "tabName": "其他",
+            "tabWidth": "100",
+            "tabName": "生活百货",
             "tabIndex": "4"
         },{
-            "tabWidth": "60",
-            "tabName": "品类2",
+            "tabWidth": "100",
+            "tabName": "美食吃货",
             "tabIndex": "5"
         },{
-            "tabWidth": "60",
-            "tabName": "其他2",
+            "tabWidth": "100",
+            "tabName": "美容护理",
+            "tabIndex": "6"
+        },{
+            "tabWidth": "100",
+            "tabName": "母婴儿童",
+            "tabIndex": "5"
+        },{
+            "tabWidth": "100",
+            "tabName": "数码家电",
             "tabIndex": "6"
         }]
     }

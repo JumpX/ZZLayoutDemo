@@ -15,12 +15,10 @@
 
 @interface ZZCategoryView ()<UICollectionViewDataSource, UICollectionViewDelegate>
 
-//@property (nonatomic, strong)   UIImageView *imageView;
 @property (nonatomic, strong)   ZZSectionModel        *sectionModel;
 @property (nonatomic, assign)   NSInteger             currnetIndex;
 @property (nonatomic, strong)   UICollectionView      *tabCollectionView;
 @property (nonatomic, assign)   CGFloat               paddingItemSpacing;
-
 @property (nonatomic, strong)   UIView                *selectedView;
 
 @end
@@ -30,7 +28,6 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-//        [self addSubview:self.imageView];
         self.paddingItemSpacing = 0.0;
         self.currnetIndex = 1;
         [self addSubview:self.tabCollectionView];
@@ -53,7 +50,6 @@
 
 - (void)bindDataWithViewModel:(ZZSectionModel *)viewData
 {
-//    self.imageView.image = [UIImage imageNamed:@"category.png"];
     self.sectionModel = viewData;
     self.tabCollectionView.backgroundColor = [UIColor greenColor];
     [self p_adjustCollectionViewPadding];
@@ -200,13 +196,5 @@
     }
     return _selectedView;
 }
-
-//- (UIImageView *)imageView
-//{
-//    if (!_imageView) {
-//        _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-//    }
-//    return _imageView;
-//}
 
 @end

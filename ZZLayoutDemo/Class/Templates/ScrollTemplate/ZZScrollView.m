@@ -14,9 +14,8 @@
 
 @interface ZZScrollView ()
 
-@property (nonatomic, strong) UIScrollView *scrollContainer;
-@property (nonatomic, strong) NSArray *viewControllers;
-@property (nonatomic, strong) ZZSectionModel *sectionModel;
+@property (nonatomic, strong) NSArray                   *viewControllers;
+@property (nonatomic, strong) ZZSectionModel            *sectionModel;
 @property (nonatomic, strong) ZZContainerViewController *containerVC;
 
 @end
@@ -26,6 +25,7 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        self.backgroundColor = [UIColor whiteColor];
         self.containerVC = [ZZContainerViewController new];
         [self addSubview:self.containerVC.view];
     }
@@ -35,7 +35,8 @@
 - (void)bindDataWithViewModel:(ZZSectionModel *)viewData
 {
     self.sectionModel = viewData;
-    [self.containerVC bindDataWithViewModel:self.sectionModel];
+    [self.containerVC bindDataWithViewModel:viewData];
 }
+
 
 @end

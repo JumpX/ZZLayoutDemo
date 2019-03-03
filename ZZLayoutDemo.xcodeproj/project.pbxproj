@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		545ECC1D222BFCB500FB1FE7 /* ZZDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545ECC1C222BFCB500FB1FE7 /* ZZDisplayView.m */; };
+		545ECC24222C1F2C00FB1FE7 /* BXPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545ECC23222C1F2C00FB1FE7 /* BXPageContentView.m */; };
+		545ECC27222C1FBF00FB1FE7 /* BXSegmentTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545ECC26222C1FBF00FB1FE7 /* BXSegmentTitleView.m */; };
 		54CB852B22278004000381F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54CB852922278004000381F3 /* Main.storyboard */; };
 		54CB852D22278006000381F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54CB852C22278006000381F3 /* Assets.xcassets */; };
 		54CB853022278006000381F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54CB852E22278006000381F3 /* LaunchScreen.storyboard */; };
@@ -30,7 +33,6 @@
 		54CB85852228FC11000381F3 /* ZZScrollProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB85842228FC11000381F3 /* ZZScrollProtocol.m */; };
 		54CB85882228FCAA000381F3 /* ZZCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB85872228FCAA000381F3 /* ZZCollectionView.m */; };
 		54CB858B2228FCB6000381F3 /* ZZAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB858A2228FCB6000381F3 /* ZZAdView.m */; };
-		54CB858E2228FCC1000381F3 /* ZZCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB858D2228FCC1000381F3 /* ZZCategoryView.m */; };
 		54CB85912228FCCF000381F3 /* ZZScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB85902228FCCF000381F3 /* ZZScrollView.m */; };
 		54CB859422290603000381F3 /* UIColor+ZZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB859322290603000381F3 /* UIColor+ZZ.m */; };
 		54CB85A0222910D5000381F3 /* collection.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CB859E222910D5000381F3 /* collection.png */; };
@@ -40,7 +42,6 @@
 		54CB85A82229177F000381F3 /* collection1.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CB85A62229177F000381F3 /* collection1.png */; };
 		54CB85A92229177F000381F3 /* collection2.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CB85A72229177F000381F3 /* collection2.png */; };
 		54CB85AC22291C4B000381F3 /* ZZTabModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB85AB22291C4B000381F3 /* ZZTabModel.m */; };
-		54CB85AF22291E2E000381F3 /* ZZTabCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB85AE22291E2E000381F3 /* ZZTabCollectionViewCell.m */; };
 		54CB85B322292FA1000381F3 /* ZZRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB85B222292FA1000381F3 /* ZZRecommendViewController.m */; };
 		54CB85B622292FB5000381F3 /* ZZOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB85B522292FB5000381F3 /* ZZOtherViewController.m */; };
 		54CB85B92229314F000381F3 /* ZZRecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB85B82229314F000381F3 /* ZZRecommendCell.m */; };
@@ -53,6 +54,12 @@
 /* Begin PBXFileReference section */
 		24206038FBBB6593E59C44F2 /* libPods-ZZLayoutDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZZLayoutDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E3185108235AF5381CB26A4 /* Pods-ZZLayoutDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZZLayoutDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZZLayoutDemo/Pods-ZZLayoutDemo.release.xcconfig"; sourceTree = "<group>"; };
+		545ECC1B222BFCB500FB1FE7 /* ZZDisplayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZDisplayView.h; sourceTree = "<group>"; };
+		545ECC1C222BFCB500FB1FE7 /* ZZDisplayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZDisplayView.m; sourceTree = "<group>"; };
+		545ECC22222C1F2C00FB1FE7 /* BXPageContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXPageContentView.h; sourceTree = "<group>"; };
+		545ECC23222C1F2C00FB1FE7 /* BXPageContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BXPageContentView.m; sourceTree = "<group>"; };
+		545ECC25222C1FBF00FB1FE7 /* BXSegmentTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXSegmentTitleView.h; sourceTree = "<group>"; };
+		545ECC26222C1FBF00FB1FE7 /* BXSegmentTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BXSegmentTitleView.m; sourceTree = "<group>"; };
 		54CB852022278004000381F3 /* ZZLayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZLayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54CB852A22278004000381F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		54CB852C22278006000381F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,8 +103,6 @@
 		54CB85872228FCAA000381F3 /* ZZCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCollectionView.m; sourceTree = "<group>"; };
 		54CB85892228FCB6000381F3 /* ZZAdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZAdView.h; sourceTree = "<group>"; };
 		54CB858A2228FCB6000381F3 /* ZZAdView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZAdView.m; sourceTree = "<group>"; };
-		54CB858C2228FCC1000381F3 /* ZZCategoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZCategoryView.h; sourceTree = "<group>"; };
-		54CB858D2228FCC1000381F3 /* ZZCategoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCategoryView.m; sourceTree = "<group>"; };
 		54CB858F2228FCCF000381F3 /* ZZScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZScrollView.h; sourceTree = "<group>"; };
 		54CB85902228FCCF000381F3 /* ZZScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZScrollView.m; sourceTree = "<group>"; };
 		54CB859222290603000381F3 /* UIColor+ZZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ZZ.h"; sourceTree = "<group>"; };
@@ -111,8 +116,6 @@
 		54CB85A72229177F000381F3 /* collection2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collection2.png; sourceTree = "<group>"; };
 		54CB85AA22291C4B000381F3 /* ZZTabModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZTabModel.h; sourceTree = "<group>"; };
 		54CB85AB22291C4B000381F3 /* ZZTabModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZTabModel.m; sourceTree = "<group>"; };
-		54CB85AD22291E2E000381F3 /* ZZTabCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZTabCollectionViewCell.h; sourceTree = "<group>"; };
-		54CB85AE22291E2E000381F3 /* ZZTabCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZTabCollectionViewCell.m; sourceTree = "<group>"; };
 		54CB85B122292FA1000381F3 /* ZZRecommendViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZRecommendViewController.h; sourceTree = "<group>"; };
 		54CB85B222292FA1000381F3 /* ZZRecommendViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZRecommendViewController.m; sourceTree = "<group>"; };
 		54CB85B422292FB5000381F3 /* ZZOtherViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZOtherViewController.h; sourceTree = "<group>"; };
@@ -154,6 +157,22 @@
 				24206038FBBB6593E59C44F2 /* libPods-ZZLayoutDemo.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		545ECC1E222C16AA00FB1FE7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				54CB8546222781B9000381F3 /* Models */,
+				54CB856D2228F786000381F3 /* ZZBaseTableViewCell.h */,
+				54CB856E2228F786000381F3 /* ZZBaseTableViewCell.m */,
+				54CB85702228F8DB000381F3 /* ZZBaseView.h */,
+				54CB85712228F8DB000381F3 /* ZZBaseView.m */,
+				54CB85602228F378000381F3 /* ZZBaseModel.h */,
+				54CB85622228F379000381F3 /* ZZBaseModel.m */,
+				54CB85742228FA31000381F3 /* ZZSectionProtocol.h */,
+				54CB859822290CCF000381F3 /* ZZBaseViewProtocol.h */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		54CB851722278004000381F3 = {
@@ -218,8 +237,6 @@
 		54CB8546222781B9000381F3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				54CB85602228F378000381F3 /* ZZBaseModel.h */,
-				54CB85622228F379000381F3 /* ZZBaseModel.m */,
 				54CB855E2228F378000381F3 /* ZZCellModel.h */,
 				54CB855F2228F378000381F3 /* ZZCellModel.m */,
 				54CB85632228F379000381F3 /* ZZSectionModel.h */,
@@ -263,8 +280,7 @@
 				54CB85842228FC11000381F3 /* ZZScrollProtocol.m */,
 				54CB858F2228FCCF000381F3 /* ZZScrollView.h */,
 				54CB85902228FCCF000381F3 /* ZZScrollView.m */,
-				54CB85BD222938A0000381F3 /* HeaderView */,
-				54CB85B022292F40000381F3 /* ViewControllers */,
+				54CB85B022292F40000381F3 /* PageViews */,
 			);
 			path = ScrollTemplate;
 			sourceTree = "<group>";
@@ -292,75 +308,48 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		54CB85B022292F40000381F3 /* ViewControllers */ = {
+		54CB85B022292F40000381F3 /* PageViews */ = {
 			isa = PBXGroup;
 			children = (
+				54CB85BE22293A55000381F3 /* ZZContainerViewController.h */,
+				54CB85BF22293A55000381F3 /* ZZContainerViewController.m */,
 				54CB85B122292FA1000381F3 /* ZZRecommendViewController.h */,
 				54CB85B222292FA1000381F3 /* ZZRecommendViewController.m */,
 				54CB85B422292FB5000381F3 /* ZZOtherViewController.h */,
 				54CB85B522292FB5000381F3 /* ZZOtherViewController.m */,
 				54CB85B72229314F000381F3 /* ZZRecommendCell.h */,
 				54CB85B82229314F000381F3 /* ZZRecommendCell.m */,
-				54CB85BE22293A55000381F3 /* ZZContainerViewController.h */,
-				54CB85BF22293A55000381F3 /* ZZContainerViewController.m */,
+				545ECC22222C1F2C00FB1FE7 /* BXPageContentView.h */,
+				545ECC23222C1F2C00FB1FE7 /* BXPageContentView.m */,
+				545ECC25222C1FBF00FB1FE7 /* BXSegmentTitleView.h */,
+				545ECC26222C1FBF00FB1FE7 /* BXSegmentTitleView.m */,
 			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		54CB85BD222938A0000381F3 /* HeaderView */ = {
-			isa = PBXGroup;
-			children = (
-				54CB858C2228FCC1000381F3 /* ZZCategoryView.h */,
-				54CB858D2228FCC1000381F3 /* ZZCategoryView.m */,
-				54CB85AD22291E2E000381F3 /* ZZTabCollectionViewCell.h */,
-				54CB85AE22291E2E000381F3 /* ZZTabCollectionViewCell.m */,
-			);
-			path = HeaderView;
+			path = PageViews;
 			sourceTree = "<group>";
 		};
 		54CB85C322294D16000381F3 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				54CB85C422294D45000381F3 /* ViewControllers */,
-				54CB85C622294D60000381F3 /* Views */,
-				54CB85C522294D59000381F3 /* Protocols */,
-				54CB8546222781B9000381F3 /* Models */,
+				54CB85C422294D45000381F3 /* Main */,
 				54CB85792228FBBA000381F3 /* Templates */,
+				545ECC1E222C16AA00FB1FE7 /* Base */,
 			);
 			path = Class;
 			sourceTree = "<group>";
 		};
-		54CB85C422294D45000381F3 /* ViewControllers */ = {
+		54CB85C422294D45000381F3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				54CB853D2227811F000381F3 /* ZZMainViewController.h */,
 				54CB853E2227811F000381F3 /* ZZMainViewController.m */,
 				54CB85422227816C000381F3 /* ZZLayoutViewController.h */,
 				54CB85432227816C000381F3 /* ZZLayoutViewController.m */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		54CB85C522294D59000381F3 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				54CB85742228FA31000381F3 /* ZZSectionProtocol.h */,
-				54CB859822290CCF000381F3 /* ZZBaseViewProtocol.h */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		54CB85C622294D60000381F3 /* Views */ = {
-			isa = PBXGroup;
-			children = (
+				545ECC1B222BFCB500FB1FE7 /* ZZDisplayView.h */,
+				545ECC1C222BFCB500FB1FE7 /* ZZDisplayView.m */,
 				54CB854E22278C05000381F3 /* ZZTableView.h */,
 				54CB854F22278C05000381F3 /* ZZTableView.m */,
-				54CB856D2228F786000381F3 /* ZZBaseTableViewCell.h */,
-				54CB856E2228F786000381F3 /* ZZBaseTableViewCell.m */,
-				54CB85702228F8DB000381F3 /* ZZBaseView.h */,
-				54CB85712228F8DB000381F3 /* ZZBaseView.m */,
 			);
-			path = Views;
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -516,10 +505,11 @@
 				54CB85682228F379000381F3 /* ZZBaseModel.m in Sources */,
 				54CB85442227816C000381F3 /* ZZLayoutViewController.m in Sources */,
 				54CB85B322292FA1000381F3 /* ZZRecommendViewController.m in Sources */,
+				545ECC1D222BFCB500FB1FE7 /* ZZDisplayView.m in Sources */,
 				54CB857F2228FBF6000381F3 /* ZZAdProtocol.m in Sources */,
 				54CB85B92229314F000381F3 /* ZZRecommendCell.m in Sources */,
+				545ECC27222C1FBF00FB1FE7 /* BXSegmentTitleView.m in Sources */,
 				54CB85BC222935A6000381F3 /* ZZVCModel.m in Sources */,
-				54CB85AF22291E2E000381F3 /* ZZTabCollectionViewCell.m in Sources */,
 				54CB853F2227811F000381F3 /* ZZMainViewController.m in Sources */,
 				54CB858B2228FCB6000381F3 /* ZZAdView.m in Sources */,
 				54CB853322278006000381F3 /* main.m in Sources */,
@@ -535,10 +525,10 @@
 				54CB85662228F379000381F3 /* ZZCellModel.m in Sources */,
 				54CB853C222780D6000381F3 /* ZZAppDelegate.m in Sources */,
 				54CB85B622292FB5000381F3 /* ZZOtherViewController.m in Sources */,
-				54CB858E2228FCC1000381F3 /* ZZCategoryView.m in Sources */,
 				54CB856F2228F786000381F3 /* ZZBaseTableViewCell.m in Sources */,
 				54CB85852228FC11000381F3 /* ZZScrollProtocol.m in Sources */,
 				54CB855022278C05000381F3 /* ZZTableView.m in Sources */,
+				545ECC24222C1F2C00FB1FE7 /* BXPageContentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

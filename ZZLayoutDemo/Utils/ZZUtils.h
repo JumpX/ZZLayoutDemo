@@ -16,7 +16,7 @@
 #define kSearchHeight 50
 #define kCollectionHeight 80
 #define kAdHeight 100
-#define kCategoryHeight 40
+#define kCategoryHeight 50
 #define kScrollHeight (SCREEN_HEIGHT-kNavTopHeight-kCategoryHeight)
 //#define kScrollHeight 180
 
