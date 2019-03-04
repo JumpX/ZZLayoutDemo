@@ -27,12 +27,12 @@
 
 - (NSUInteger)rowNumInSection:(ZZSectionModel *)sectionModel
 {
-    return [sectionModel.cellArr count];
+    return [sectionModel.cellList count];
 }
 
 - (ZZBaseModel*)getRowData:(ZZSectionModel *)sectionModel indexPath:(NSIndexPath *)indexPath
 {
-    ZZCellModel *cellModel = sectionModel.cellArr[indexPath.row];
+    ZZCellModel *cellModel = sectionModel.cellList[indexPath.row];
     return cellModel;
 }
 

@@ -10,6 +10,7 @@
 		545ECC1D222BFCB500FB1FE7 /* ZZDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545ECC1C222BFCB500FB1FE7 /* ZZDisplayView.m */; };
 		545ECC24222C1F2C00FB1FE7 /* BXPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545ECC23222C1F2C00FB1FE7 /* BXPageContentView.m */; };
 		545ECC27222C1FBF00FB1FE7 /* BXSegmentTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545ECC26222C1FBF00FB1FE7 /* BXSegmentTitleView.m */; };
+		549BD81C222CF80D002EC60F /* newdata.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 549BD81B222CF80D002EC60F /* newdata.geojson */; };
 		54CB852B22278004000381F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54CB852922278004000381F3 /* Main.storyboard */; };
 		54CB852D22278006000381F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54CB852C22278006000381F3 /* Assets.xcassets */; };
 		54CB853022278006000381F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54CB852E22278006000381F3 /* LaunchScreen.storyboard */; };
@@ -60,6 +61,7 @@
 		545ECC23222C1F2C00FB1FE7 /* BXPageContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BXPageContentView.m; sourceTree = "<group>"; };
 		545ECC25222C1FBF00FB1FE7 /* BXSegmentTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXSegmentTitleView.h; sourceTree = "<group>"; };
 		545ECC26222C1FBF00FB1FE7 /* BXSegmentTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BXSegmentTitleView.m; sourceTree = "<group>"; };
+		549BD81B222CF80D002EC60F /* newdata.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = newdata.geojson; sourceTree = "<group>"; };
 		54CB852022278004000381F3 /* ZZLayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZLayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54CB852A22278004000381F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		54CB852C22278006000381F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 		54CB85412227813D000381F3 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				549BD81B222CF80D002EC60F /* newdata.geojson */,
 				54CB85A62229177F000381F3 /* collection1.png */,
 				54CB85A72229177F000381F3 /* collection2.png */,
 				54CB85A22229157D000381F3 /* category.png */,
@@ -416,6 +419,7 @@
 				54CB853022278006000381F3 /* LaunchScreen.storyboard in Resources */,
 				54CB85A0222910D5000381F3 /* collection.png in Resources */,
 				54CB856B2228F445000381F3 /* data.geojson in Resources */,
+				549BD81C222CF80D002EC60F /* newdata.geojson in Resources */,
 				54CB85A52229157D000381F3 /* scroll.png in Resources */,
 				54CB852D22278006000381F3 /* Assets.xcassets in Resources */,
 				54CB85A42229157D000381F3 /* category.png in Resources */,

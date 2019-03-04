@@ -44,18 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface BXPageContentView : UIView
 
-/**
- 对象方法创建BXPageContentView
- 
- @param frame frame
- @param childVCs 子VC数组
- @param parentVC 父视图VC
- @param delegate delegate
- @return BXPageContentView
- */
-- (instancetype)initWithFrame:(CGRect)frame childVCs:(NSArray *)childVCs parentVC:(UIViewController *)parentVC delegate:(id<BXPageContentViewDelegate>)delegate;
+@interface BXPageContentView : UIView
 
 @property (nonatomic, weak) id<BXPageContentViewDelegate>delegate;
 
@@ -69,7 +59,31 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) BOOL contentViewCanScroll;
 
-@end
+/**
+ 对象方法创建BXPageContentView
+ 
+ @param frame frame
+ @param childVCs 子VC数组
+ @param parentVC 父视图VC
+ @param delegate delegate
+ @return BXPageContentView
+ */
+- (instancetype)initWithFrame:(CGRect)frame childVCs:(NSArray *)childVCs parentVC:(UIViewController *)parentVC delegate:(id<BXPageContentViewDelegate>)delegate;
 
+/**
+ 设置BXPageContentView
+ 
+ @param childVCs 子VC数组
+ @param parentVC 父视图VC
+ @param delegate delegate
+ */
+- (void)setChildVCs:(NSArray *)childVCs parentVC:(UIViewController *)parentVC delegate:(id<BXPageContentViewDelegate>)delegate;
+
+/**
+ 增加子VC
+ */
+- (void)addChildVCs:(NSArray *)childVCs;
+
+@end
 
 NS_ASSUME_NONNULL_END

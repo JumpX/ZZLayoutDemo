@@ -9,15 +9,15 @@
 #import "BXPageContentView.h"
 
 #define BX_PAGE_IOS_VERSION ([[[UIDevice currentDevice] systemVersion] floatValue])
-static NSString *collectionCellIdentifier = @"collectionCellIdentifier";
+static NSString *collectionCellIdentifier = @"BXHomePageCollectionCellIdentifier";
 
 @interface BXPageContentView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
-@property (nonatomic, weak) UIViewController *parentVC;//父视图
-@property (nonatomic, strong) NSArray *childsVCs;//子视图数组
-@property (nonatomic, weak) UICollectionView *collectionView;
-@property (nonatomic, assign) CGFloat startOffsetX;
-@property (nonatomic, assign) BOOL isSelectBtn;//是否是滑动
+@property (nonatomic, weak)     UIViewController    *parentVC;//父视图
+@property (nonatomic, strong)   NSArray             *childsVCs;//子视图数组
+@property (nonatomic, weak)     UICollectionView    *collectionView;
+@property (nonatomic, assign)   CGFloat             startOffsetX;
+@property (nonatomic, assign)   BOOL                isSelectBtn;//是否是滑动
 
 @end
 
@@ -27,46 +27,33 @@ static NSString *collectionCellIdentifier = @"collectionCellIdentifier";
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
-        self.parentVC = parentVC;
-        self.childsVCs = childVCs;
-        self.delegate = delegate;
-        
-        [self setupSubViews];
+        [self setChildVCs:childVCs parentVC:parentVC delegate:delegate];
     }
     return self;
 }
 
-- (void)layoutSubviews
+- (void)setChildVCs:(NSArray *)childVCs parentVC:(UIViewController *)parentVC delegate:(id<BXPageContentViewDelegate>)delegate
 {
-    [super layoutSubviews];
+    self.parentVC = parentVC;
+    self.childsVCs = childVCs;
+    self.delegate = delegate;
+    [self setupSubViews];
 }
 
-#pragma mark --LazyLoad
-
-- (UICollectionView *)collectionView
+- (void)addChildVCs:(NSArray *)childVCs
 {
-    if (!_collectionView) {
-        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        flowLayout.itemSize = self.bounds.size;
-        flowLayout.minimumLineSpacing = 0;
-        flowLayout.minimumInteritemSpacing = 0;
-        flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        
-        UICollectionView * collectionView = [[UICollectionView alloc]initWithFrame:self.bounds collectionViewLayout:flowLayout];
-        collectionView.showsHorizontalScrollIndicator = NO;
-        collectionView.pagingEnabled = YES;
-        collectionView.bounces = NO;
-        collectionView.delegate = self;
-        collectionView.dataSource = self;
-        [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:collectionCellIdentifier];
-        [self addSubview:collectionView];
-        self.collectionView = collectionView;
+    NSMutableArray *vcs = [NSMutableArray array];
+    [vcs addObjectsFromArray:self.childsVCs];
+    [vcs addObjectsFromArray:childVCs];
+    for (UIViewController *childVC in childVCs) {
+        [self.parentVC addChildViewController:childVC];
     }
-    return _collectionView;
+    self.childsVCs = [vcs copy];
+    [self.collectionView reloadData];
 }
 
-#pragma mark --setup
+#pragma mark - setupSubViews
+
 - (void)setupSubViews
 {
     _startOffsetX = 0;
@@ -76,11 +63,15 @@ static NSString *collectionCellIdentifier = @"collectionCellIdentifier";
     for (UIViewController *childVC in self.childsVCs) {
         [self.parentVC addChildViewController:childVC];
     }
-    //    [self addSubview:self.collectionView];
     [self.collectionView reloadData];
 }
 
-#pragma mark UICollectionView
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+}
+
+#pragma mark UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -101,14 +92,13 @@ static NSString *collectionCellIdentifier = @"collectionCellIdentifier";
 
 #ifdef __IPHONE_8_0
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
-    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     UIViewController *childVc = self.childsVCs[indexPath.row];
     childVc.view.frame = cell.contentView.bounds;
     [cell.contentView addSubview:childVc.view];
 }
 #endif
 
-#pragma mark UIScrollView
+#pragma mark UIScrollViewDelegate
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -178,6 +168,30 @@ static NSString *collectionCellIdentifier = @"collectionCellIdentifier";
 {
     _contentViewCanScroll = contentViewCanScroll;
     _collectionView.scrollEnabled = _contentViewCanScroll;
+}
+
+#pragma mark - Getter
+
+- (UICollectionView *)collectionView
+{
+    if (!_collectionView) {
+        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+        flowLayout.itemSize = self.bounds.size;
+        flowLayout.minimumLineSpacing = 0;
+        flowLayout.minimumInteritemSpacing = 0;
+        flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        
+        UICollectionView * collectionView = [[UICollectionView alloc]initWithFrame:self.bounds collectionViewLayout:flowLayout];
+        collectionView.showsHorizontalScrollIndicator = NO;
+        collectionView.pagingEnabled = YES;
+        collectionView.bounces = NO;
+        collectionView.delegate = self;
+        collectionView.dataSource = self;
+        [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:collectionCellIdentifier];
+        [self addSubview:collectionView];
+        self.collectionView = collectionView;
+    }
+    return _collectionView;
 }
 
 @end

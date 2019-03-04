@@ -28,15 +28,33 @@
 
 @implementation ZZDisplayView
 
+- (void)dealloc
+{
+    NSLog(@"ZZDisplayView dealloc");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Data
 
-- (void)loadData
+- (void)localData
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSString *file = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"geojson"];
         NSData *data = [NSData dataWithContentsOfFile:file];
         self.totalModel = [ZZTotalModel yy_modelWithJSON:data];
-        [self.tableView.mj_header endRefreshing];
+        [self.tableView reloadData];
+        if ([self.tableView.mj_header isRefreshing]) {
+            [self.tableView.mj_header endRefreshing];
+        }
+    });
+}
+
+- (void)loadData
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSString *file = [[NSBundle mainBundle] pathForResource:@"newdata" ofType:@"geojson"];
+        NSData *data = [NSData dataWithContentsOfFile:file];
+        self.totalModel = [ZZTotalModel yy_modelWithJSON:data];
         [self.tableView reloadData];
         if ([self.tableView.mj_header isRefreshing]) {
             [self.tableView.mj_header endRefreshing];
@@ -54,11 +72,13 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScrollStatus) name:@"kZZTableViewLeaveTop" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableViewCanScroll:) name:@"kZZTableViewCanScroll" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollEndIndex:) name:@"kZZScrollEndIndex" object:nil];
-        
+        @weakify(self)
         self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            @strongify(self)
             [self loadData];
         }];
-        [self.tableView.mj_header beginRefreshing];
+        [self localData];
+//        [self.tableView.mj_header beginRefreshing];
     }
     return self;
 }
@@ -151,10 +171,10 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+//    tableView insertSections:<#(nonnull NSIndexSet *)#> withRowAnimation:<#(UITableViewRowAnimation)#>
+//    tableView reloadSections:<#(nonnull NSIndexSet *)#> withRowAnimation:<#(UITableViewRowAnimation)#>
     ZZSectionModel *sectionModel = self.totalModel.sectionArr[section];
     if (sectionModel.tabList.count > 0) {
-//        ZZCategoryView *headerView = [[ZZCategoryView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kCategoryHeight)];
-//        [headerView bindDataWithViewModel:sectionModel];
         NSMutableArray *titles = [NSMutableArray new];
         CGFloat width = sectionModel.tabList.firstObject.tabWidth.floatValue;
         [sectionModel.tabList enumerateObjectsUsingBlock:^(ZZTabModel * _Nonnull model, NSUInteger idx, BOOL * _Nonnull stop) {

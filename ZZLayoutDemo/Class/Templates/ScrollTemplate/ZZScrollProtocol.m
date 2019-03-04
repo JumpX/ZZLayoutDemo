@@ -18,7 +18,8 @@
 
 -(NSString *)cellReuseIdentifier:(ZZSectionModel *)sectionModel indexPath:(NSIndexPath *)indexPath
 {
-    return [NSString stringWithFormat:@"%@%@",sectionModel.templateID, sectionModel.NoNum];
+//    return [NSString stringWithFormat:@"%@%@",sectionModel.templateID, sectionModel.NoNum];
+    return nil;
 }
 
 - (CGFloat)cellHeight:(ZZSectionModel *)sectionModel indexPath:(NSIndexPath *)indexPath
