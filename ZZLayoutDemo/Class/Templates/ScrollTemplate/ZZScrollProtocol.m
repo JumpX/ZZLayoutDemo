@@ -28,7 +28,7 @@
 
 - (NSUInteger)rowNumInSection:(ZZSectionModel *)sectionModel
 {
-    return [sectionModel.vcList count];
+    return [sectionModel.vcList count] > 0 ? 1 : 0;
 }
 
 - (ZZBaseModel*)getRowData:(ZZSectionModel *)sectionModel indexPath:(NSIndexPath *)indexPath

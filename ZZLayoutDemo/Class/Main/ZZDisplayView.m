@@ -13,7 +13,6 @@
 #import <YYModel/YYModel.h>
 #import "ZZBaseTableViewCell.h"
 #import "UIColor+ZZ.h"
-#import "ZZCategoryView.h"
 #import "ZZTableView.h"
 #import "BXSegmentTitleView.h"
 
