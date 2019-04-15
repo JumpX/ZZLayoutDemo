@@ -8,6 +8,8 @@
 
 #import "ZZMainViewController.h"
 #import "ZZLayoutViewController.h"
+#import <ZZArtboardButton/ZZArtboardButton.h>
+#import <ZZAdd/UIColor+ZZAdd.h>
 
 @interface ZZMainViewController ()
 
@@ -21,10 +23,10 @@
     
     self.title = @"布局Demo";
     
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    ZZArtboardButton *btn = [ZZArtboardButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(100, 400, 200, 100);
-    btn.backgroundColor = [UIColor blueColor];
-    [btn setTitle:@"进入首页" forState:UIControlStateNormal];
+    [btn setType:ZZArtboardTypeCustom textColor:[UIColor whiteColor] font:[UIFont systemFontOfSize:20 weight:UIFontWeightMedium] text:@"进入首页"];
+    [btn setBackgroundImageWithColors:@[[UIColor blueColor],[UIColor randomColor],[UIColor redColor]] forState:UIControlStateNormal directionType:ZZArtboardDirectionTypeLeftTopToRightBottom];
     [btn addTarget:self action:@selector(jumpHomePage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
 }

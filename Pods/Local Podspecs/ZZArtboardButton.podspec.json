@@ -1,0 +1,26 @@
+{
+  "name": "ZZArtboardButton",
+  "version": "0.0.1",
+  "summary": "渐变圆角按钮",
+  "description": "渐变圆角按钮，支持斜向、横向等多个方向绚烂，也支持多种颜色渐变",
+  "homepage": "https://github.com/JumpX/ZZArtboardButton",
+  "license": "LICENSE",
+  "authors": {
+    "Jungle": "aosai123007@163.com"
+  },
+  "source": {
+    "git": "",
+    "tag": "0.0.1"
+  },
+  "source_files": [
+    "Classes",
+    "Classes/**/*.{h,m}"
+  ],
+  "exclude_files": "Classes/Exclude",
+  "platforms": {
+    "osx": null,
+    "ios": null,
+    "tvos": null,
+    "watchos": null
+  }
+}

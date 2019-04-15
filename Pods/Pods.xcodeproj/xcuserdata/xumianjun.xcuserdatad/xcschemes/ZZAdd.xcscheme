@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "71ECF16EAFB9455678A66AC4F3CB65D9"
-               BuildableName = "libPods-ZZLayoutDemo.a"
-               BlueprintName = "Pods-ZZLayoutDemo"
+               BlueprintIdentifier = "DBF1CA487551BC9CE9955EFE8D6D81DA"
+               BuildableName = "libZZAdd.a"
+               BlueprintName = "ZZAdd"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -9,5 +9,9 @@ target 'ZZLayoutDemo' do
   
   pod 'MJRefresh'
   pod 'YYModel'
+  
+  
+  pod 'ZZArtboardButton', :path=> './LocalPods/ZZArtboardButton'
+  pod 'ZZAdd', :path=> './LocalPods/ZZAdd'
 
 end
