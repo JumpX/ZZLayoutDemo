@@ -8,6 +8,3 @@
 
 #import "ZZUtils.h"
 
-@implementation ZZUtils
-
-@end

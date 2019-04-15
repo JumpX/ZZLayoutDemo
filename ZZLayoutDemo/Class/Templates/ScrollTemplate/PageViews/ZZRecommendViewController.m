@@ -15,11 +15,12 @@
 #import "UIColor+ZZ.h"
 #import "ZZRecommendCell.h"
 #import "UIView+Addtion.h"
+#import "ZZOtherViewController.h"
 
 @interface ZZRecommendViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView                   *tableView;
-@property (nonatomic, strong) NSMutableArray <ZZCellModel*> *cellArr;
+@property (nonatomic, strong) NSMutableArray <ZZCellModel*> *cellList;
 @property (nonatomic, assign) BOOL                          vcCanScroll;
 
 @end
@@ -34,31 +35,56 @@
         NSString *file = [[NSBundle mainBundle] pathForResource:@"cellsdata" ofType:@"geojson"];
         NSData *data = [NSData dataWithContentsOfFile:file];
         ZZSectionModel *sectionModel = [ZZSectionModel yy_modelWithJSON:data];
-        [self.cellArr addObjectsFromArray:sectionModel.cellArr];
+        [self.cellList addObjectsFromArray:sectionModel.cellList];
         [self.tableView reloadData];
-//        if ([self.tableView.mj_footer isRefreshing]) {
-//            [self.tableView.mj_footer endRefreshing];
-//        }
     });
 }
 
 #pragma mark - Life Cycle
 
+- (void)dealloc
+{
+    NSLog(@"Recommend --dealloc");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    NSLog(@"viewDidLoad");
+    
     self.view.backgroundColor = [UIColor whiteColor];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ZZVCCanScroll:) name:@"kZZVCCanScroll" object:nil];
     
-    self.cellArr = [NSMutableArray new];
+    self.cellList = [NSMutableArray new];
+    @weakify(self);
     self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        @strongify(self);
         [self loadData];
     }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    NSLog(@"viewWillAppear");
     [self loadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    NSLog(@"viewDidAppear");
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    NSLog(@"viewWillDisappear");
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    NSLog(@"viewDidDisappear");
 }
 
 #pragma mark - Status Change
@@ -80,7 +106,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.cellArr.count;
+    return self.cellList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -91,7 +117,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *reuseID = @"ZZRecommendCell";
-    ZZCellModel *cellModel = self.cellArr[indexPath.row];
+    ZZCellModel *cellModel = self.cellList[indexPath.row];
     ZZRecommendCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseID];
     if (!cell)
     {

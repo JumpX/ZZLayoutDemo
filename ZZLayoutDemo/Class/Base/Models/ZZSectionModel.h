@@ -21,10 +21,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)     NSString            *NoNum;
 @property (nonatomic, strong)   NSArray <ZZTabModel *>*tabList;
 @property (nonatomic, strong)   NSArray <ZZVCModel *>*vcList;
-@property (nonatomic, strong)   NSArray <ZZCellModel *>*cellArr;
+@property (nonatomic, strong)   NSArray <ZZCellModel *>*cellList;
 
 @property (nonatomic, assign)   NSInteger            tabIndex;
 @property (nonatomic, strong)   NSObject<ZZSectionProtocol>*sectionProtocol;
+
+- (BOOL)isEqualToSectionModel:(ZZSectionModel *)sectionModel;
 
 @end
 

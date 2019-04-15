@@ -19,39 +19,23 @@
 @property (nonatomic, strong) BXPageContentView *pageContentView;
 @property (nonatomic, strong) NSArray           *viewControllers;
 @property (nonatomic, strong) ZZSectionModel    *sectionModel;
-//@property (nonatomic, assign) NSInteger         curIndex;
 
 @end
 
 @implementation ZZContainerViewController
 
+- (void)dealloc
+{
+    NSLog(@"PageContainer --dealloc");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleEndIndex:) name:@"kZZTitleEndIndex" object:nil];
-
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidScroll:) name:kCellItemDidScroll object:nil];
-
-//    self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-//    self.scrollView.backgroundColor = [UIColor redColor];
-//    self.scrollView.showsVerticalScrollIndicator = NO;
-//    self.scrollView.showsHorizontalScrollIndicator = NO;
-//    self.scrollView.directionalLockEnabled = YES;
-//    self.scrollView.pagingEnabled = YES;
-//    self.scrollView.bounces = NO;
-//    self.scrollView.delegate = self;
-//    self.scrollView.scrollsToTop = NO;
-//    self.scrollView.delaysContentTouches = NO;
-//    self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    [self.view addSubview:self.scrollView];
 }
 
 #pragma mark - Status Change
-
-//- (void)itemDidScroll:(NSNotification *)noti
-//{
-//    [self.scrollView setContentOffset:CGPointMake(self.scrollView.width*[noti.object integerValue], 0) animated:YES];
-//}
 
 - (void)titleEndIndex:(NSNotification *)noti
 {
@@ -62,6 +46,11 @@
 
 - (void)bindDataWithViewModel:(ZZSectionModel *)viewData
 {
+    // 数据一致，不刷新
+    if ([self.sectionModel isEqualToSectionModel:viewData]) {
+        return;
+    }
+    
     self.sectionModel = viewData;
     NSMutableArray <UIViewController *>*vcArrayM = [NSMutableArray new];
     if (self.sectionModel.vcList.count > 1) {
@@ -77,9 +66,7 @@
     }
     
     self.viewControllers = vcArrayM;
-    
-    self.pageContentView = [[BXPageContentView alloc] initWithFrame:self.view.bounds childVCs:vcArrayM parentVC:self delegate:self];
-    [self.view addSubview:self.pageContentView];
+    [self.pageContentView setChildVCs:vcArrayM parentVC:self delegate:self];
 }
 
 #pragma mark BXSegmentTitleViewDelegate
@@ -94,21 +81,13 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"kZZTableViewCanScroll" object:@(NO)];
 }
 
-#pragma mark - UIScrollViewDelegate
-
-//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-//{
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"kZZTableViewCanScroll" object:@(NO)];
-//}
-//
-//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-//    NSInteger index = scrollView.contentOffset.x / self.scrollView.width;
-//    if (index != self.curIndex) {
-//        self.curIndex = index;
-//        [[NSNotificationCenter defaultCenter] postNotificationName:kCellHeaderDidScroll object:@(index)];
-//    }
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"kZZTableViewCanScroll" object:@(YES)];
-//}
-
+- (BXPageContentView *)pageContentView
+{
+    if (!_pageContentView) {
+        _pageContentView = [[BXPageContentView alloc] initWithFrame:self.view.bounds];
+        [self.view addSubview:_pageContentView];
+    }
+    return _pageContentView;
+}
 
 @end
