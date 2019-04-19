@@ -14,11 +14,17 @@
 #import "ZZBaseTableViewCell.h"
 #import "UIColor+ZZ.h"
 #import "ZZTableView.h"
-#import "BXSegmentTitleView.h"
+#import <ZZTabViewBar/ZZTabViewBar.h>
+#import <ZZTabViewBar/ZZTabMutiPage.h>
+#import "ZZRecommendViewController.h"
+#import "ZZOtherViewController.h"
 
-@interface ZZDisplayView () <UITableViewDataSource, UITableViewDelegate, BXSegmentTitleViewDelegate>
+@interface ZZDisplayView () <UITableViewDataSource, UITableViewDelegate, ZZTabViewBarDelegate, ZZTabMutiPageDelegate, ZZTabMutiPageDataSource>
 
-@property (nonatomic, strong) BXSegmentTitleView *titleView;
+@property (nonatomic, strong) ZZTabViewBar  *tabViewBar;
+@property (nonatomic, copy)   NSArray       *titleList;
+@property (nonatomic, copy)   NSArray       *vcList;
+@property (nonatomic, strong) ZZTabMutiPage *mutiPage;
 @property (nonatomic, strong) ZZTableView   *tableView;
 @property (nonatomic, strong) ZZTotalModel  *totalModel;
 @property (nonatomic, assign) BOOL          canScroll;
@@ -69,6 +75,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.canScroll = YES;
+        self.titleList = [NSArray array];
+        self.vcList = [NSArray array];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScrollStatus) name:@"kZZTableViewLeaveTop" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableViewCanScroll:) name:@"kZZTableViewCanScroll" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollEndIndex:) name:@"kZZScrollEndIndex" object:nil];
@@ -87,7 +95,7 @@
 
 - (void)scrollEndIndex:(NSNotification *)noti
 {
-    self.titleView.selectIndex = [noti.object integerValue];
+    [self.tabViewBar tabViewBarScrollToIndex:[noti.object integerValue]];
 }
 
 - (void)tableViewCanScroll:(NSNotification *)noti
@@ -132,17 +140,42 @@
     ZZSectionModel *sectionModel = self.totalModel.sectionArr[indexPath.section];
     NSString *cellReuseID = [self.totalModel cellReuseIdentifier:sectionModel indexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseID];
-    if (!cell)
-    {
-        CGFloat height = [self.totalModel cellHeight:sectionModel indexPath:indexPath];
-        cell = [[ZZBaseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:cellReuseID
-                                               cellHeight:height
-                                             sectionModel:sectionModel];
-        cell.contentView.backgroundColor = [UIColor colorWithHex:self.totalModel.bgColor];
+    CGFloat height = [self.totalModel cellHeight:sectionModel indexPath:indexPath];
+    if ([sectionModel.templateID isEqualToString:kZZCellReuseIDScroll]) {
+        if (!cell) {
+            cell = [[ZZBaseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseID];
+            self.mutiPage.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), height);
+            [cell.contentView addSubview:self.mutiPage];
+        }
+        if (self.vcList.count > 0) {
+            return cell;
+        } else {
+            NSMutableArray <UIViewController *>*vcArrayM = [NSMutableArray new];
+            if (sectionModel.vcList.count > 1) {
+                [sectionModel.vcList enumerateObjectsUsingBlock:^(ZZVCModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if (idx == 1) {
+                        ZZRecommendViewController *vc = [ZZRecommendViewController new];
+                        [vcArrayM addObject:vc];
+                    } else {
+                        ZZOtherViewController *vc = [ZZOtherViewController new];
+                        [vcArrayM addObject:vc];
+                    }
+                }];
+            }
+            self.vcList = [vcArrayM copy];
+            return cell;
+        }
+    } else {
+        if (!cell)
+        {
+            cell = [[ZZBaseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                              reuseIdentifier:cellReuseID
+                                                   cellHeight:height
+                                                 sectionModel:sectionModel];
+            cell.contentView.backgroundColor = [UIColor colorWithHex:self.totalModel.bgColor];
+        }
+        return cell;
     }
-    return cell;
-    
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -171,24 +204,65 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-//    tableView insertSections:<#(nonnull NSIndexSet *)#> withRowAnimation:<#(UITableViewRowAnimation)#>
-//    tableView reloadSections:<#(nonnull NSIndexSet *)#> withRowAnimation:<#(UITableViewRowAnimation)#>
-    ZZSectionModel *sectionModel = self.totalModel.sectionArr[section];
-    if (sectionModel.tabList.count > 0) {
-        NSMutableArray *titles = [NSMutableArray new];
-        CGFloat width = sectionModel.tabList.firstObject.tabWidth.floatValue;
-        [sectionModel.tabList enumerateObjectsUsingBlock:^(ZZTabModel * _Nonnull model, NSUInteger idx, BOOL * _Nonnull stop) {
-            [titles addObject:model.tabName];
-        }];
-        self.titleView = [[BXSegmentTitleView alloc]initWithFrame:CGRectMake(0, 0, width, 50) titles:titles delegate:self indicatorType:BXIndicatorTypeEqualTitle];
-        return self.titleView;
+    if (self.titleList.count > 0) {
+        return self.tabViewBar;
+    } else {
+        ZZSectionModel *sectionModel = self.totalModel.sectionArr[section];
+        if (sectionModel.tabList.count > 0) {
+            NSMutableArray *titles = [NSMutableArray new];
+            [sectionModel.tabList enumerateObjectsUsingBlock:^(ZZTabModel * _Nonnull model, NSUInteger idx, BOOL * _Nonnull stop) {
+                [titles addObject:model.tabName];
+            }];
+            self.titleList = [titles copy];
+            [self.tabViewBar reloadTabViewBar];
+            [self.tabViewBar tabViewBarScrollToIndex:0];
+            [self.mutiPage reloadMutiPage];
+            self.mutiPage.currentIndex = sectionModel.tabIndex;
+        }
+        return self.tabViewBar;
     }
-    return nil;
 }
 
-- (void)BXSegmentTitleView:(BXSegmentTitleView *)titleView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"kZZTitleEndIndex" object:@(endIndex)];
+- (NSInteger)numberOfItemsInTabViewBar:(ZZTabViewBar *)tabViewBar {
+    return self.titleList.count;
+}
+
+- (NSString *)tabViewBar:(ZZTabViewBar *)tabViewBar titleForItemAtIndex:(NSInteger)index {
+    return self.titleList[index];
+}
+
+- (void)tabViewBar:(ZZTabViewBar *)tabViewBar didSelectItemAtIndex:(NSInteger)index {
+    self.mutiPage.currentIndex = index;
+}
+
+- (UIViewController *)parentVCForMutiPage:(ZZTabMutiPage *)mutiPage {
+    return self.parentVC;
+}
+
+- (NSInteger)numberOfChildVCsInMutiPage:(ZZTabMutiPage *)mutiPage {
+    return self.vcList.count;
+}
+
+- (UIViewController *)mutiPage:(ZZTabMutiPage *)mutiPage childVCAtIndex:(NSInteger)index {
+    return self.vcList[index];
+}
+
+- (void)mutiPageWillBeginDragging:(ZZTabMutiPage *)mutiPage {
+
+}
+
+- (void)mutiPageDidScroll:(ZZTabMutiPage *)mutiPage startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex progress:(CGFloat)progress {
+    [self.tabViewBar tabViewBarScrollFromStartIndex:startIndex endIndex:endIndex progress:progress];
+}
+
+- (void)mutiPageDidEndDecelerating:(ZZTabMutiPage *)mutiPage {
+
+}
+
+- (void)mutiPage:(ZZTabMutiPage *)mutiPage selectedItemAtIndex:(NSInteger)index {
+    ZZSectionModel *sectionModel = self.totalModel.sectionArr.lastObject;
+    sectionModel.tabIndex = index;
+    [self.tabViewBar tabViewBarScrollToIndex:index];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -230,6 +304,34 @@
         [self addSubview:_tableView];
     }
     return _tableView;
+}
+
+- (ZZTabViewBar *)tabViewBar {
+    if (!_tabViewBar) {
+        _tabViewBar = [[ZZTabViewBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), 50)];
+        _tabViewBar.backgroundColor = [UIColor whiteColor];
+        _tabViewBar.normalFont = [UIFont systemFontOfSize:15.0f weight:UIFontWeightMedium];
+        _tabViewBar.selectedFont = [UIFont systemFontOfSize:18.0f weight:UIFontWeightMedium];
+        _tabViewBar.normalColor = [UIColor colorWithHex:@"#9B9B9B"];
+        _tabViewBar.selectedColor = [UIColor colorWithHex:@"#111111"];
+        _tabViewBar.redPointType = ZZTabViewBarRedPointTypeSolid;
+        _tabViewBar.indicatorType = ZZTabViewBarIndicatorTypeImage;
+        _tabViewBar.indicatorToBottomInterval = 12.5;
+        _tabViewBar.titleToBottomInterval = 12.5;
+        _tabViewBar.itemSpace = 15.0;
+        _tabViewBar.delegate = self;
+    }
+    return _tabViewBar;
+}
+
+- (ZZTabMutiPage *)mutiPage {
+    if (!_mutiPage) {
+        _mutiPage = [ZZTabMutiPage new];
+        _mutiPage.didAppearPercent = 0.01;
+        _mutiPage.dataSource = self;
+        _mutiPage.delegate = self;
+    }
+    return _mutiPage;
 }
 
 @end

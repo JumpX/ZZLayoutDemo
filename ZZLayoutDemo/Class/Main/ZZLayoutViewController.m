@@ -48,6 +48,7 @@
     self.displayView = ({
         ZZDisplayView *displayView = [[ZZDisplayView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.view.height-kNavTopHeight)];
         displayView.backgroundColor = [UIColor lightGrayColor];
+        displayView.parentVC = self;
         [self.containerView addSubview:displayView];
         displayView;
     });

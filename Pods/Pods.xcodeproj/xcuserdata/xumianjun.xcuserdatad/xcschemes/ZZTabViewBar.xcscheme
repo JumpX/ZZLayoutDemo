@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "271C40C33C5E6E72EC8F54A982F18E7A"
-               BuildableName = "libYYModel.a"
-               BlueprintName = "YYModel"
+               BlueprintIdentifier = "B6E53F8247F32507503F13447DA11A55"
+               BuildableName = "libZZTabViewBar.a"
+               BlueprintName = "ZZTabViewBar"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

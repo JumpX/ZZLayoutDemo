@@ -1,17 +1,18 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+
+platform :ios, '9.0'
 
 target 'ZZLayoutDemo' do
-  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-
-  # Pods for ZZLayoutDemo
   
+  ################################### 远程pod
+
   pod 'MJRefresh'
   pod 'YYModel'
   
+  ################################### 本地pod
   
-  pod 'ZZArtboardButton', :path=> './LocalPods/ZZArtboardButton'
-  pod 'ZZAdd', :path=> './LocalPods/ZZAdd'
+  pod 'ZZArtboardButton',           :path=> './LocalPods/ZZArtboardButton'
+  pod 'ZZAdd',                      :path=> './LocalPods/ZZAdd'
+  pod 'ZZTabViewBar',               :path=> './LocalPods/ZZTabViewBar'
 
 end

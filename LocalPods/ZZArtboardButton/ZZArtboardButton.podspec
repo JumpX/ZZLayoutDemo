@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = "渐变圆角按钮，支持斜向、横向等多个方向绚烂，也支持多种颜色渐变"
 
-  s.homepage     = "https://github.com/JumpX/ZZArtboardButton"
+  s.homepage     = "https://github.com/JumpX/ZZArtboardButton.git"
   # s.screenshots  = "https://github.com/JumpX/ZZArtboardButton/blob/master/images/buttonState.png", "https://github.com/JumpX/ZZArtboardButton/blob/master/images/buttonState1.png"
 
 
@@ -80,6 +80,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "", :tag => "0.0.1" }
 
+  s.platform     = :ios, "9.0"
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "14DB1DEEE33FC5469AE24EE4A3BC2714"
+               BlueprintIdentifier = "0EC3E67C1988F49564BAF8B44F8667ED"
                BuildableName = "libZZArtboardButton.a"
                BlueprintName = "ZZArtboardButton"
                ReferencedContainer = "container:Pods.xcodeproj">

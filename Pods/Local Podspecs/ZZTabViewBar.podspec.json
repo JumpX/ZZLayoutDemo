@@ -1,0 +1,24 @@
+{
+  "name": "ZZTabViewBar",
+  "version": "0.0.1",
+  "summary": "A short description of ZZTabViewBar.",
+  "description": "ZZTabViewBar and ZZTabMutiPage",
+  "homepage": "https://github.com/JumpX/ZZTabViewBar.git",
+  "license": "LICENSE",
+  "authors": {
+    "Jungle": "aosai123007@163.com"
+  },
+  "source": {
+    "git": "",
+    "tag": "0.0.1"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": [
+    "Classes",
+    "Classes/**/*.{h,m}"
+  ],
+  "exclude_files": "Classes/Exclude",
+  "resources": "Asset/image.xcassets"
+}

@@ -13,12 +13,11 @@
 
 - (NSString*)subViewName
 {
-    return @"ZZScrollView";
+    return nil;
 }
 
 -(NSString *)cellReuseIdentifier:(ZZSectionModel *)sectionModel indexPath:(NSIndexPath *)indexPath
 {
-//    return [NSString stringWithFormat:@"%@%@",sectionModel.templateID, sectionModel.NoNum];
     return nil;
 }
 

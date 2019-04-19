@@ -34,7 +34,6 @@
 		54CB85852228FC11000381F3 /* ZZScrollProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB85842228FC11000381F3 /* ZZScrollProtocol.m */; };
 		54CB85882228FCAA000381F3 /* ZZCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB85872228FCAA000381F3 /* ZZCollectionView.m */; };
 		54CB858B2228FCB6000381F3 /* ZZAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB858A2228FCB6000381F3 /* ZZAdView.m */; };
-		54CB85912228FCCF000381F3 /* ZZScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB85902228FCCF000381F3 /* ZZScrollView.m */; };
 		54CB859422290603000381F3 /* UIColor+ZZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB859322290603000381F3 /* UIColor+ZZ.m */; };
 		54CB85A0222910D5000381F3 /* collection.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CB859E222910D5000381F3 /* collection.png */; };
 		54CB85A1222910D5000381F3 /* ad.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CB859F222910D5000381F3 /* ad.png */; };
@@ -47,7 +46,6 @@
 		54CB85B622292FB5000381F3 /* ZZOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB85B522292FB5000381F3 /* ZZOtherViewController.m */; };
 		54CB85B92229314F000381F3 /* ZZRecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB85B82229314F000381F3 /* ZZRecommendCell.m */; };
 		54CB85BC222935A6000381F3 /* ZZVCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB85BB222935A6000381F3 /* ZZVCModel.m */; };
-		54CB85C022293A55000381F3 /* ZZContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB85BF22293A55000381F3 /* ZZContainerViewController.m */; };
 		54CB85C22229493A000381F3 /* cellsdata.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 54CB85C122293F29000381F3 /* cellsdata.geojson */; };
 		A9DCB4A0A96B9134A521596E /* libPods-ZZLayoutDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24206038FBBB6593E59C44F2 /* libPods-ZZLayoutDemo.a */; };
 /* End PBXBuildFile section */
@@ -105,8 +103,6 @@
 		54CB85872228FCAA000381F3 /* ZZCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZCollectionView.m; sourceTree = "<group>"; };
 		54CB85892228FCB6000381F3 /* ZZAdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZAdView.h; sourceTree = "<group>"; };
 		54CB858A2228FCB6000381F3 /* ZZAdView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZAdView.m; sourceTree = "<group>"; };
-		54CB858F2228FCCF000381F3 /* ZZScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZScrollView.h; sourceTree = "<group>"; };
-		54CB85902228FCCF000381F3 /* ZZScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZScrollView.m; sourceTree = "<group>"; };
 		54CB859222290603000381F3 /* UIColor+ZZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ZZ.h"; sourceTree = "<group>"; };
 		54CB859322290603000381F3 /* UIColor+ZZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ZZ.m"; sourceTree = "<group>"; };
 		54CB859822290CCF000381F3 /* ZZBaseViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZBaseViewProtocol.h; sourceTree = "<group>"; };
@@ -126,8 +122,6 @@
 		54CB85B82229314F000381F3 /* ZZRecommendCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZRecommendCell.m; sourceTree = "<group>"; };
 		54CB85BA222935A6000381F3 /* ZZVCModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZVCModel.h; sourceTree = "<group>"; };
 		54CB85BB222935A6000381F3 /* ZZVCModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZVCModel.m; sourceTree = "<group>"; };
-		54CB85BE22293A55000381F3 /* ZZContainerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZContainerViewController.h; sourceTree = "<group>"; };
-		54CB85BF22293A55000381F3 /* ZZContainerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZContainerViewController.m; sourceTree = "<group>"; };
 		54CB85C122293F29000381F3 /* cellsdata.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = cellsdata.geojson; sourceTree = "<group>"; };
 		D0FFEC0ED5834E74A5564AF6 /* Pods-ZZLayoutDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZZLayoutDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZZLayoutDemo/Pods-ZZLayoutDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,6 +169,17 @@
 				54CB859822290CCF000381F3 /* ZZBaseViewProtocol.h */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		54A2B263226A0021002B5B7B /* PageViews（deprecated） */ = {
+			isa = PBXGroup;
+			children = (
+				545ECC22222C1F2C00FB1FE7 /* BXPageContentView.h */,
+				545ECC23222C1F2C00FB1FE7 /* BXPageContentView.m */,
+				545ECC25222C1FBF00FB1FE7 /* BXSegmentTitleView.h */,
+				545ECC26222C1FBF00FB1FE7 /* BXSegmentTitleView.m */,
+			);
+			path = "PageViews（deprecated）";
 			sourceTree = "<group>";
 		};
 		54CB851722278004000381F3 = {
@@ -281,9 +286,8 @@
 			children = (
 				54CB85832228FC11000381F3 /* ZZScrollProtocol.h */,
 				54CB85842228FC11000381F3 /* ZZScrollProtocol.m */,
-				54CB858F2228FCCF000381F3 /* ZZScrollView.h */,
-				54CB85902228FCCF000381F3 /* ZZScrollView.m */,
 				54CB85B022292F40000381F3 /* PageViews */,
+				54A2B263226A0021002B5B7B /* PageViews（deprecated） */,
 			);
 			path = ScrollTemplate;
 			sourceTree = "<group>";
@@ -314,18 +318,12 @@
 		54CB85B022292F40000381F3 /* PageViews */ = {
 			isa = PBXGroup;
 			children = (
-				54CB85BE22293A55000381F3 /* ZZContainerViewController.h */,
-				54CB85BF22293A55000381F3 /* ZZContainerViewController.m */,
 				54CB85B122292FA1000381F3 /* ZZRecommendViewController.h */,
 				54CB85B222292FA1000381F3 /* ZZRecommendViewController.m */,
 				54CB85B422292FB5000381F3 /* ZZOtherViewController.h */,
 				54CB85B522292FB5000381F3 /* ZZOtherViewController.m */,
 				54CB85B72229314F000381F3 /* ZZRecommendCell.h */,
 				54CB85B82229314F000381F3 /* ZZRecommendCell.m */,
-				545ECC22222C1F2C00FB1FE7 /* BXPageContentView.h */,
-				545ECC23222C1F2C00FB1FE7 /* BXPageContentView.m */,
-				545ECC25222C1FBF00FB1FE7 /* BXSegmentTitleView.h */,
-				545ECC26222C1FBF00FB1FE7 /* BXSegmentTitleView.m */,
 			);
 			path = PageViews;
 			sourceTree = "<group>";
@@ -517,7 +515,6 @@
 				54CB853F2227811F000381F3 /* ZZMainViewController.m in Sources */,
 				54CB858B2228FCB6000381F3 /* ZZAdView.m in Sources */,
 				54CB853322278006000381F3 /* main.m in Sources */,
-				54CB85C022293A55000381F3 /* ZZContainerViewController.m in Sources */,
 				54CB85672228F379000381F3 /* ZZSectionModel.m in Sources */,
 				54CB85882228FCAA000381F3 /* ZZCollectionView.m in Sources */,
 				54CB85722228F8DB000381F3 /* ZZBaseView.m in Sources */,
@@ -525,7 +522,6 @@
 				54CB857C2228FBE8000381F3 /* ZZCollectionProtocol.m in Sources */,
 				54CB854A2227877A000381F3 /* UIView+Addtion.m in Sources */,
 				54CB855A2228F143000381F3 /* ZZUtils.m in Sources */,
-				54CB85912228FCCF000381F3 /* ZZScrollView.m in Sources */,
 				54CB85662228F379000381F3 /* ZZCellModel.m in Sources */,
 				54CB853C222780D6000381F3 /* ZZAppDelegate.m in Sources */,
 				54CB85B622292FB5000381F3 /* ZZOtherViewController.m in Sources */,

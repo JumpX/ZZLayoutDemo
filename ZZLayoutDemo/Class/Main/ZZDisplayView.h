@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZZDisplayView : UIView
 
+@property (nonatomic, weak) UIViewController *parentVC;
+
 
 @end
 
